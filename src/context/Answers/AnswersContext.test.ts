@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { generateRandomCounters } from './generateRandomCounters';
-import { counters } from '../models';
+import { counters } from '../../models';
 
 describe('generateRandomCounters', () => {
     it('should generate an array of 4 counters by default', () => {

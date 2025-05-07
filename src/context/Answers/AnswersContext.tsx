@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState, type PropsWithChildren } from "react";
-import { type CounterTypes, counters } from '../models';
+import { type CounterTypes, counters } from '../../models';
 
 
 

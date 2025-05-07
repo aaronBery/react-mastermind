@@ -6,12 +6,16 @@ interface CounterProps {
     disabled: boolean;
     color: CounterTypes | undefined;
     highlighted: boolean;
+    selected: (counter: CounterTypes | undefined) => void,
 }
 
-const Counter: React.FC<CounterProps> = ({ disabled, color, highlighted }) => {
+const Counter: React.FC<CounterProps> = ({ disabled, color, highlighted, selected }) => {
     const colorSelected = (_color: CounterTypes | undefined, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-
         e.preventDefault();
+        
+console.log('counter component ' + color);
+
+        selected(color);
     }
 
     return (
