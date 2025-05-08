@@ -15,7 +15,7 @@ const blankGuess: (CounterTypes | undefined)[] = [undefined, undefined, undefine
 
 export const GuessesProvider: React.FC<PropsWithChildren> = ({children}) => {
     const { answers } = useContext(AnswerContext);
-    const { marks, handleSetMarks } = useContext(MarksContext);
+    const { handleSetMarks } = useContext(MarksContext);
     const [ guesses, setGuesses ] = useState<(CounterTypes | undefined)[][]>([
         [...blankGuess],
         [...blankGuess],
