@@ -7,12 +7,11 @@ import { Button, Modal } from "@mui/material";
 
 
 const Guesses = () => {
-    const { guesses, updateGuess, currentEditableRow } = useContext(GuessesContext);
+    const { guesses, updateGuess, currentEditableRow, submitGuess } = useContext(GuessesContext);
     const [ showPicker, setShowPicker ] = useState<boolean>(false);
     const [ counterIndexEditing, setCounterIndexEditing ] = useState<number>(-1);
 
     const guessCounterSelected = (_counter: CounterTypes | undefined, counterIndex: number) => {
-        console.log(_counter, counterIndex);
         setCounterIndexEditing(counterIndex);
         setShowPicker(true);
     }
@@ -38,7 +37,7 @@ const Guesses = () => {
                                     <Counter color={counter} highlighted={false} disabled={false} selected={(counter) => guessCounterSelected(counter, counterIndex)}/>    
                                 </li>
                             )}
-                            <li><Button>Guess</Button></li>
+                            <li><Button onClick={() => submitGuess()} disabled={currentEditableRow !== guessIndex}>Guess</Button></li>
                         </ul>
                     </li>
                 )}
