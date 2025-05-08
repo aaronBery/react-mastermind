@@ -2,6 +2,7 @@ import { createContext, useContext, useState, type PropsWithChildren } from "rea
 import type { CounterTypes, GameSatus, MarkType } from "../../models";
 import { AnswerContext } from "../Answers/AnswersContext";
 import { MarksContext } from "../Marks/MarksContext";
+import { GameSatusContext } from "../GameSatus/GameSatusContext";
 
 export const GuessesContext = createContext<{ 
     guesses: (CounterTypes | undefined)[][];
@@ -16,6 +17,7 @@ const blankGuess: (CounterTypes | undefined)[] = [undefined, undefined, undefine
 export const GuessesProvider: React.FC<PropsWithChildren> = ({children}) => {
     const { answers } = useContext(AnswerContext);
     const { handleSetMarks } = useContext(MarksContext);
+    const { gameStatus, setGameStatus } = useContext(GameSatusContext);
     const [ guesses, setGuesses ] = useState<(CounterTypes | undefined)[][]>([
         [...blankGuess],
         [...blankGuess],
@@ -24,7 +26,6 @@ export const GuessesProvider: React.FC<PropsWithChildren> = ({children}) => {
         [...blankGuess],
         [...blankGuess],
     ]);
-    const [ gameStatus, setGameStatus ] = useState<GameSatus>('IN_PROGRESS');
 
     const [ currentEditableRow, setCurrentEditableRow ] = useState(0);
 

@@ -20,10 +20,10 @@ const Picker: React.FC<PickerProps> = ({ selected }) => {
 
     return (
         <Box sx={style}>
-            <ul className="grid grid-cols-3">
+            <ul className="grid grid-cols-3 gap-5 justify-items-center">
                 {counters.map((counter, index) => 
                     <li key={index}>
-                        <Counter color={counter} disabled={false} highlighted={false} selected={selected} />
+                        <Counter hidden={false} color={counter} disabled={false} highlighted={false} selected={selected} />
                     </li>
                 )}
             </ul>

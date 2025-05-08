@@ -4,10 +4,12 @@ import Counter from "../components/counter";
 import type { CounterTypes } from "../models";
 import Picker from "../components/picker";
 import { Button, Modal } from "@mui/material";
+import { GameSatusContext } from "../context/GameSatus/GameSatusContext";
 
 
 const Guesses = () => {
     const { guesses, updateGuess, currentEditableRow, submitGuess } = useContext(GuessesContext);
+    const { gameStatus } = useContext(GameSatusContext);
     const [ showPicker, setShowPicker ] = useState<boolean>(false);
     const [ counterIndexEditing, setCounterIndexEditing ] = useState<number>(-1);
 
@@ -34,7 +36,9 @@ const Guesses = () => {
                         <ul className="flex flex-row h-[30px] items-center">
                             {guess.map((counter, counterIndex) => 
                                 <li key={counterIndex} className="mr-5">
-                                    <Counter color={counter} highlighted={false} disabled={false} selected={(counter) => guessCounterSelected(counter, counterIndex)}/>    
+                                    <Counter hidden={false} color={counter} 
+                                        highlighted={counterIndex === counterIndexEditing && currentEditableRow === guessIndex} 
+                                        disabled={currentEditableRow !== guessIndex || gameStatus !== 'IN_PROGRESS'} selected={(counter) => guessCounterSelected(counter, counterIndex)}/>    
                                 </li>
                             )}
                             <li><Button onClick={() => submitGuess()} disabled={currentEditableRow !== guessIndex}>Guess</Button></li>
