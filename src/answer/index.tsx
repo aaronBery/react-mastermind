@@ -10,7 +10,7 @@ function Answer() {
     if (gameStatus === 'IN_PROGRESS') {
         return (
             <ul className="flex flex-row">
-                { answers.map((answer, index) => 
+                { answers.map((_answer, index) => 
                     <li key={index} className="mr-5">
                         <Counter color={undefined} hidden={true} highlighted={false} disabled={true} selected={() => {}}/>
                     </li>
